@@ -20,3 +20,24 @@ export async function searchForText(query) {
   return response?.results || [];
 }
 
+export function scrollToElement(id) {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs || tabs.length === 0) {
+      console.warn("No active tabs found");
+      return;
+    }
+    const tab = tabs[0];
+    chrome.tabs.sendMessage(tab.id, { action: "scrollToElement", id }, () => {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending scroll message:", chrome.runtime.lastError);
+      } else {
+        console.log("Scroll message sent successfully");
+      }
+    });
+  });
+}
+
+
+
+
+

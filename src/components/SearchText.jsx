@@ -1,6 +1,6 @@
 import "./SearchText.css";
 import { useState, useEffect } from 'react';
-import { searchForText } from "../popup.js";
+import { searchForText, scrollToElement } from "../popup.js";
 
 export default function SearchText({ searchText }) {
   const [results, setResults] = useState([]);
@@ -48,9 +48,14 @@ export default function SearchText({ searchText }) {
 		{loading ? (
 			<div>Searching...</div>
 		) : results.length > 0 ? (
-			results.map((item, i) => (
-				<div id="text-item" key={i}>{highlightMatches(item, searchText)}</div>
-			))
+			<div id="text-list">
+				<div>
+					Results Found: {results.length}
+				</div>
+				{results.map((item, i) => (
+				<button id="text-item" onClick={() => scrollToElement(item.id)} key={i}>{highlightMatches(item, searchText)}</button>
+			))}
+			</div>
 		) : message ? (
 			<div>{message}</div>
 		) : null}
@@ -59,10 +64,9 @@ export default function SearchText({ searchText }) {
   );
 }
 
-function highlightMatches(text, query) {
-  if (!query) return text;
-
-  const parts = text.split(new RegExp(`(${query})`, "gi"));
+function highlightMatches(item, query) {
+  if (!query) return item;
+  const parts = item.text.split(new RegExp(`(${query})`, "gi"));
   return parts.map((part, index) =>
     part.toLowerCase() === query.toLowerCase() ? (
       <mark key={index} style={{ backgroundColor: "yellow" }}>{part}</mark>

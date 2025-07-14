@@ -1,18 +1,25 @@
 #text-list {
+	display: flex;
+  	flex-direction: column;
+	gap: 2px;
 	text-align: center;
 	padding: 20px;
 	max-height: 400px;       /* or any height you want */
   	overflow-y: auto;        /* vertical scrollbar when content overflows */
 	overflow-x: hidden;
-	margin-top: 10px;
   	padding: 8px;            /* optional spacing inside */
  	background: white;       /* optional background */
 }
 
 #text-item {
-  padding: 10px;
-  border: 1px solid #ddd;   /* lighter border for subtle separation */
-  border-radius: 4px;       /* rounded corners for nicer look */
-  margin-bottom: 10px;      /* space between items */
-  background-color: #f9f9f9; /* light background for each item */
+	padding: 15px;
+	border: 1px solid #ddd;   /* lighter border for subtle separation */
+	border-radius: 4px;       /* rounded corners for nicer look */
+	margin-bottom: 10px;      /* space between items */
+	background-color: #f9f9f9; /* light background for each item */
+}
+
+#text-item:hover {
+	background-color: #eef;
+	cursor: pointer;
 }
