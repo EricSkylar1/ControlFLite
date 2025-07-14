@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import "./Popup.css";  
 import SearchText from '../components/SearchText';
 
 export default function() {
-  const [searchText, setSearchText] = useState("");
-  const [results, setResults] = useState("");
-
-  useEffect(() => {
-  const timeout = setTimeout(() => {
-    const searchedItems = searchText(data, searchText);
-	setResults(searchedItems);
-  }, 300);
-
-  return () => {
-    // TODO: cancel timeout if searchText changes
-	clearTimeout(timeout);
-  };
-}, [searchText]);
+	const [searchText, setSearchText] = useState("");
 
   return (
     <div>
-      	<h1 id="title">Control F Lite</h1> 
+      	<h1 id="title">Control+F Lite</h1> 
 		{searchText.trim().length === 0 && (
 			<div id="description">
 				<span>Find the text you need faster than Ctrl+F, no more clicking up and down arrows to hunt through pages.</span>
@@ -37,7 +24,7 @@ export default function() {
 			onChange={(e) => setSearchText(e.target.value)}
 		/>
 		{searchText.trim().length > 0 && (
-			<SearchText items={results}/>
+			<SearchText searchText={searchText}/>
 		)}
     </div>
   )

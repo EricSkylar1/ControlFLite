@@ -11,7 +11,3 @@ browser.commands.onCommand.addListener((command) => {
 	browser.action.openPopup();
   }
 });
-
-export function searchText(data, query){
-	
-}

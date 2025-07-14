@@ -1,16 +1,17 @@
 {
-  "{{chrome}}.manifest_version": 3,
-  "{{firefox}}.manifest_version": 2,
-  "{{chrome}}.action": {
-    "default_popup": "src/popup.html"
-  },
-  "{{firefox}}.browser_action": {
+  "manifest_version": 3,
+  "action": {
     "default_popup": "src/popup.html"
   },
   "background": {
-    "{{chrome}}.service_worker": "src/background.js",
-    "{{firefox}}.scripts": ["src/background.js"]
+    "service_worker": "src/background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"]
+    }
+  ],
   "commands": {
     "open-search": {
       "suggested_key": {
@@ -19,5 +20,11 @@
       },
       "description": "Open enhanced text search popup"
     }
-  }
+  },
+  "permissions": [
+	"scripting",
+	"tabs",
+	"<all_urls>"
+],
+"host_permissions": ["<all_urls>"]
 }
