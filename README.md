@@ -2,16 +2,21 @@ Getting Started Development Setup
 
 To run the extension locally:
 
-```
 Clone the repository:
 
 ```
 
 git clone <https://github.com/your-username/control-f-lite.git> cd control-f-lite
 
+```
+
 Install the dependencies:
 
+```
+
 npm install
+
+```
 
 Start the development server:
 
@@ -20,7 +25,7 @@ npm run dev
 
 ```
 
-This will compile the extension and watch for file changes. Load the Extension into Your Browser Chrome
+The command will automatically open your browser and temporarily add the extension. If this doesn’t happen, please follow the steps below.
 
 ```
 Open chrome://extensions
